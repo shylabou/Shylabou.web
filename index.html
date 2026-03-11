@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHYLABOU | Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --black: #000000; --white: #ffffff; --gray: #f9f9f9; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--white); color: var(--black); overflow-x: hidden; }
+        .top-bar { background-color: var(--black); color: var(--white); text-align: center; padding: 8px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #eee; position: sticky; top: 0; background: white; z-index: 100; }
+        .logo { font-size: 22px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; text-decoration: none; color: black; }
+        .icon-btn { font-size: 20px; cursor: pointer; background: none; border: none; }
+
+        /* Menú Lateral */
+        .side-menu { position: fixed; top: 0; left: -100%; width: 280px; height: 100%; background: white; z-index: 1000; transition: 0.4s; padding: 60px 30px; }
+        .side-menu.active { left: 0; }
+        .side-menu a { display: block; padding: 20px 0; text-decoration: none; color: black; text-transform: uppercase; font-size: 14px; letter-spacing: 2px; border-bottom: 1px solid #f5f5f5; }
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 999; }
+        .overlay.active { display: block; }
+
+        .container { padding: 40px 20px; text-align: center; }
+        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 900; }
+        .whatsapp-btn img { width: 30px; }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    <div class="side-menu" id="sideMenu">
+        <div class="close-btn" id="closeBtn">×</div>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="productos.html">Productos</a>
+        <a href="#">Carrito (0)</a>
+        <a href="https://instagram.com/shylabou" style="margin-top: 40px; font-size: 11px; color: #888;">Instagram</a>
+    </div>
+
+    <div class="top-bar">Envíos a toda Venezuela — Shylabou Official</div>
+    <header>
+        <button class="icon-btn" id="menuBtn">☰</button>
+        <a href="index.html" class="logo">SHYLABOU</a>
+        <button class="icon-btn">🛒</button>
+    </header>
+
+    <div class="container">
+        <h2 style="font-weight: 300; letter-spacing: 3px; text-transform: uppercase;">Novedades</h2>
+        <p style="color: #888; font-size: 13px;">Explora nuestras piezas exclusivas.</p>
+    </div>
+
+    <a href="https://wa.me/584128624428" class="whatsapp-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+    </a>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sideMenu = document.getElementById('sideMenu');
+        const closeBtn = document.getElementById('closeBtn');
+        const overlay = document.getElementById('overlay');
+
+        menuBtn.onclick = () => { sideMenu.classList.add('active'); overlay.classList.add('active'); };
+        const closeMenu = () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); };
+        closeBtn.onclick = closeMenu;
+        overlay.onclick = closeMenu;
+    </script>
+</body>
+</html>
